@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+
+: ${AWS_SECRET_KEY:?}
+: ${AWS_ACCESS_KEY:?}
+: ${STACK_NAME:?}
+
+ROOT_DIR=$(dirname "${BASH_SOURCE[0]}")/../
+
+aws cloudformation create-stack --regio=eu-west-1 --stack-name ${STACK_NAME} --template-body file://${ROOT_DIR}/config/cdn.json
